@@ -1,0 +1,191 @@
+{
+  "name": "shared-workflow-error-handler-v1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "141689ac-d6bc-4cf4-9e86-27d64a663f29",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "notifications",
+          "mode": "list",
+          "cachedResultName": "notifications"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "acknowledged": false,
+            "notification_type": "workflow_error",
+            "notification_channel": "internal",
+            "notification_priority": "high",
+            "source_workflow": "={{$json.workflow.name}}",
+            "affected_module": "workflow_reliability",
+            "title": "Workflow Failure Detected",
+            "message": "={{$json.execution.error.message}}",
+            "delivery_status": "created"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "notification_id",
+              "displayName": "notification_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notification_type",
+              "displayName": "notification_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notification_channel",
+              "displayName": "notification_channel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notification_priority",
+              "displayName": "notification_priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "source_workflow",
+              "displayName": "source_workflow",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "affected_module",
+              "displayName": "affected_module",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "delivery_status",
+              "displayName": "delivery_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "acknowledged",
+              "displayName": "acknowledged",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        208,
+        0
+      ],
+      "id": "b222a9c8-7658-4ec2-8af1-d75bf5ccd339",
+      "name": "Insert rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "fDUhrnPBERVxkakE",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Insert rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "b0b817a0-cc36-4861-a419-bece9c424816",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "23fa188f03d2e634bc22e8f316db883e2636cbec8f0cb9f2aba4024dda2d2748"
+  },
+  "id": "x3einownGRG78R5v",
+  "tags": []
+}

@@ -1,0 +1,589 @@
+{
+  "name": "shared-lead-intake-reliability-v1",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e1aa0271-969a-4e70-b7e0-b7557b63dc06",
+              "name": "source_platform",
+              "value": "manual_test",
+              "type": "string"
+            },
+            {
+              "id": "b6a3e2f1-79e8-41fe-bd8c-d0c9e3bad1d6",
+              "name": "business_category",
+              "value": "shared",
+              "type": "string"
+            },
+            {
+              "id": "e246d23e-1980-4fdc-b19f-db80813f71d4",
+              "name": "business_module",
+              "value": "intake",
+              "type": "string"
+            },
+            {
+              "id": "a71333a3-0553-4bdc-91c0-226bd95c9647",
+              "name": "name",
+              "value": "test lead",
+              "type": "string"
+            },
+            {
+              "id": "0e0c1a8e-6e9e-4d07-b2c5-a9ef9a62beb8",
+              "name": "email",
+              "value": "test@example.com",
+              "type": "string"
+            },
+            {
+              "id": "aa4715f7-abf4-4f7b-a819-fee1ccd2da2a",
+              "name": "phone",
+              "value": "9999999999",
+              "type": "string"
+            },
+            {
+              "id": "0e8f3260-000c-4b03-acdf-20ce608a702d",
+              "name": "lead_status",
+              "value": "new",
+              "type": "string"
+            },
+            {
+              "id": "391ea117-acd8-4a60-b4dc-23633b1066ca",
+              "name": "lead_score",
+              "value": 50,
+              "type": "number"
+            },
+            {
+              "id": "e94d0bd4-72c8-4f7b-b7c6-e515a913cd35",
+              "name": "ai_summary",
+              "value": "initial test lead",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d5a26268-f8fd-40d4-b1b7-17be8e4f74e9",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "universal_leads",
+          "mode": "list",
+          "cachedResultName": "universal_leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "lead_score": "={{ $json.lead_score }}",
+            "source_platform": "={{ $json.source_platform }}",
+            "business_category": "={{ $json.business_category }}",
+            "business_module": "={{ $json.business_module }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "phone": "={{ $json.phone }}",
+            "lead_status": "={{ $json.lead_status }}",
+            "ai_summary": "={{ $json.ai_summary }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "lead_id",
+              "displayName": "lead_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "source_platform",
+              "displayName": "source_platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "business_category",
+              "displayName": "business_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "business_module",
+              "displayName": "business_module",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lead_status",
+              "displayName": "lead_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lead_score",
+              "displayName": "lead_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_summary",
+              "displayName": "ai_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        416,
+        0
+      ],
+      "id": "ce501f66-58da-4043-873b-034150825865",
+      "name": "Insert rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "fDUhrnPBERVxkakE",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "workflow_executions",
+          "mode": "list",
+          "cachedResultName": "workflow_executions"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "records_processed": 1,
+            "workflow_name": "shared-lead-intake-logging-v1",
+            "workflow_category": "shared",
+            "affected_module": "lead_intake",
+            "execution_status": "success",
+            "triggered_by": "manual"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "execution_id",
+              "displayName": "execution_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "workflow_name",
+              "displayName": "workflow_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "workflow_category",
+              "displayName": "workflow_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "started_at",
+              "displayName": "started_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "completed_at",
+              "displayName": "completed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "execution_status",
+              "displayName": "execution_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "affected_module",
+              "displayName": "affected_module",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "triggered_by",
+              "displayName": "triggered_by",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "records_processed",
+              "displayName": "records_processed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "failure_reason",
+              "displayName": "failure_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        608,
+        0
+      ],
+      "id": "f9de175f-7d9f-4e3e-8ecc-b9d1679c6262",
+      "name": "Insert rows in a table1",
+      "credentials": {
+        "postgres": {
+          "id": "fDUhrnPBERVxkakE",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "notifications",
+          "mode": "list",
+          "cachedResultName": "notifications"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "acknowledged": false,
+            "notification_type": "workflow",
+            "notification_channel": "internal",
+            "notification_priority": "low",
+            "source_workflow": "shared-lead-intake-logging-v1",
+            "affected_module": "lead_intake",
+            "title": "Lead intake completed",
+            "message": "Lead successfully inserted into database",
+            "delivery_status": "created"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "notification_id",
+              "displayName": "notification_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notification_type",
+              "displayName": "notification_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notification_channel",
+              "displayName": "notification_channel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notification_priority",
+              "displayName": "notification_priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "source_workflow",
+              "displayName": "source_workflow",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "affected_module",
+              "displayName": "affected_module",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "delivery_status",
+              "displayName": "delivery_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "acknowledged",
+              "displayName": "acknowledged",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        800,
+        0
+      ],
+      "id": "0e287cdb-e8fd-44ef-b4c1-650e2db244c5",
+      "name": "Insert rows in a table2",
+      "credentials": {
+        "postgres": {
+          "id": "fDUhrnPBERVxkakE",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "41d2313d-17e1-4297-a298-c5ff8b13b1e6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        0
+      ],
+      "id": "eac6eaef-aaa3-457f-a79f-3b775fb24b15",
+      "name": "Webhook",
+      "webhookId": "41d2313d-17e1-4297-a298-c5ff8b13b1e6"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Insert rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert rows in a table": {
+      "main": [
+        [
+          {
+            "node": "Insert rows in a table1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert rows in a table1": {
+      "main": [
+        [
+          {
+            "node": "Insert rows in a table2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a0ff438a-d4f2-40fd-b8b3-67a432465af0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "23fa188f03d2e634bc22e8f316db883e2636cbec8f0cb9f2aba4024dda2d2748"
+  },
+  "id": "pTQxluLF5ckeIKxS",
+  "tags": []
+}
